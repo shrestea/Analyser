@@ -16,14 +16,7 @@ class ELFScanner:
         with open(self.filename, 'rb') as f:
             self.elffile = ELFFile(f)
 
-    def get_ssdeep(self):
-        try:
-            return ssdeep.hash_from_file(self.filename)
-        except ImportError:
-            pass
-        return ''
-
-    def file_info(self, report):
+    def file_info(self):
         info = []
         with open(self.filename, 'rb') as f:
             file = f.read()
@@ -32,8 +25,7 @@ class ELFScanner:
             info.append("Type: {}".format(magic.from_file(self.filename, mime=True)))
             info.append("MD5: {}".format(hashlib.md5(file).hexdigest()))
             info.append("SHA1: {}".format(hashlib.sha1(file).hexdigest()))
-            # if ssdeep_r:
-            #     info.append("ssdeep: {}".format(self.get_ssdeep()))
+
         return info
 
     def dependencies(self):

@@ -9,6 +9,7 @@ def parser():
 
     parser.add_argument('-s', action='store_true', default=False, dest='single', help='Switch to single mode of DLL reader')
     parser.add_argument('-i', action='store_true', default=False, dest='iterative', help='Swich to iterative mode of DLL reader')
+    parser.add_argument('-a', action='store_true', default=False, dest='analyse', help='Switch to analyse the file')
 
     parser.add_argument('-t', type=int, dest='threshold',  help = 'If the program did not load any new library after this number of checks, it will ask you whether you want to continue. Only useful in single mode. Default value is infinite')
 
